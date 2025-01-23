@@ -36,7 +36,9 @@ export default function FruitGraph({ readings, fruitType }: FruitGraphProps) {
           <Tooltip 
             content={({ active, payload }) => {
               if (active && payload && payload.length) {
-                const value = payload[0].value;
+                const value = payload[0]?.value;
+                if (typeof value !== 'number') return null;
+                
                 let status = 'Not ripe yet';
                 if (value > thresholds.readyToEat.min) status = 'Ready to eat';
                 if (value > thresholds.lastChance.min) status = 'Last chance';

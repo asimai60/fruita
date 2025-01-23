@@ -10,12 +10,9 @@ export default function FruitList() {
 
   // Force re-render when store updates
   useEffect(() => {
-    const unsubscribe = useFruitStore.subscribe(
-      (state) => state.fruits,
-      () => {
-        // This will trigger a re-render
-      }
-    );
+    const unsubscribe = useFruitStore.subscribe(() => {
+      // This will trigger a re-render when fruits change
+    });
 
     return () => unsubscribe();
   }, []);

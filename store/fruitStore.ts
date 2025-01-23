@@ -98,14 +98,14 @@ export const useFruitStore = create(
     (set, get) => ({
       fruits: [],
       addFruit: (type, name) => {
-        const newFruit = {
+        const newFruit: Fruit = {
           id: Math.random().toString(36).substr(2, 9),
           type,
           name,
           addedAt: new Date(),
           lastReading: 0,
           readings: [],
-          status: 'not_ripe_yet'
+          status: 'not_ripe_yet' as RipenessStatus
         };
         set((state) => ({
           fruits: [...state.fruits, newFruit]
